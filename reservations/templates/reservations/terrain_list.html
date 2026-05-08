@@ -1,0 +1,63 @@
+{% extends 'reservations/base.html' %}
+{% block title %}Terrains{% endblock %}
+{% block content %}
+<h2 class="mb-3"><i class="bi bi-geo-alt-fill me-2 text-success"></i>Terrains disponibles</h2>
+
+<form method="get" class="row g-2 mb-4">
+  <div class="col-md-4">
+    <input name="q" class="form-control" placeholder="Rechercher par nom…" value="{{ q }}">
+  </div>
+  <div class="col-md-3">
+    <select name="sport" class="form-select">
+      <option value="">Tous les sports</option>
+      {% for s in sports %}
+        <option value="{{ s.pk }}" {% if sport == s.pk|stringformat:"s" %}selected{% endif %}>
+          {{ s.nom_sport }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select name="dispo" class="form-select">
+      <option value="">Toute disponibilité</option>
+      <option value="true"  {% if dispo == "true"  %}selected{% endif %}>Disponible</option>
+      <option value="false" {% if dispo == "false" %}selected{% endif %}>Indisponible</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-success w-100">Filtrer</button>
+  </div>
+</form>
+
+<div class="row g-3">
+{% for t in terrains %}
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">
+          {% if t.type_sport.nom_sport == "Football" %}<i class="bi bi-dribbble me-1"></i>
+          {% elif t.type_sport.nom_sport == "Tennis" %}<i class="bi bi-circle me-1"></i>
+          {% elif t.type_sport.nom_sport == "Basketball" %}<i class="bi bi-bullseye me-1"></i>
+          {% else %}<i class="bi bi-trophy me-1"></i>{% endif %}
+          {{ t.nom }}
+        </h5>
+        <p class="card-text text-muted mb-2">{{ t.type_sport }} — {{ t.get_type_surface_display }}</p>
+        {% if t.disponibilite %}
+          <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>Disponible</span>
+        {% else %}
+          <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Indisponible</span>
+        {% endif %}
+      </div>
+      <div class="card-footer d-flex gap-2">
+        <a href="{% url 'terrain_detail' t.pk %}" class="btn btn-outline-secondary btn-sm">Détails</a>
+        {% if t.disponibilite %}
+          <a href="{% url 'reserver' t.pk %}" class="btn btn-success btn-sm">Réserver</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% empty %}
+  <p class="text-muted">Aucun terrain trouvé.</p>
+{% endfor %}
+</div>
+{% endblock %}

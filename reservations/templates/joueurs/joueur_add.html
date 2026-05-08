@@ -1,0 +1,26 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Ajouter Joueur{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Ajouter un joueur</h2>
+
+<form method="post" class="card p-4 shadow">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label>Nom</label>
+        {{ form.nom }}
+    </div>
+
+    <div class="mb-3">
+        <label>Téléphone</label>
+        {{ form.telephone }}
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Ajouter
+    </button>
+</form>
+
+{% endblock %}

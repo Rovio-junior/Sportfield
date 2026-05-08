@@ -1,0 +1,95 @@
+{% extends 'reservations/base.html' %}
+
+{% block title %}Accueil{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="text-white text-center rounded mb-5"style="background-image: url({% static 'images/image.png' %});background-size: cover;background-position: center;height: 400px;">
+  <div style="padding-top: 30px;">
+    <h1 class="display-4 fw-bold" >Bienvenue sur SportField </h1>
+    <p class="lead mt-3">
+      Réservez facilement vos terrains et profitez de votre sport préféré.
+    </p>
+    <a href="{% url 'terrain_list' %}" class="btn btn-success btn-lg mt-3" style="margin-top: 40px;">
+      Voir les terrains
+    </a>
+  </div>
+</div>
+
+<div class="container mb-5 p-4">
+  <h3 class="text-center mb-4 ">Pourquoi choisir SportField ?</h3>
+
+  <div class="row text-center">
+    
+    <div class="col-md-4 mb-4">
+      <i class="bi bi-calendar-check display-5 text-success"></i>
+      <h5 class="mt-3">Réservation simple</h5>
+      <p>Réservez vos terrains en quelques clics seulement.</p>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <i class="bi bi-geo-alt display-5 text-success"></i>
+      <h5 class="mt-3">Terrains proches</h5>
+      <p>Trouvez facilement des terrains disponibles près de vous.</p>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <i class="bi bi-clock display-5 text-success"></i>
+      <h5 class="mt-3">Disponibilité en temps réel</h5>
+      <p>Consultez les créneaux disponibles instantanément.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mb-5">
+  <h3 class="text-center mb-5">Sports disponibles</h3>
+  <div class="row text-center">
+    <div class="col-md-3 col-6 mb-4">
+      <img src="{% static 'images/foot.png' %}" alt="" height="60px" >
+      <p><strong>Football</strong></p>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <img src="{% static 'images/tennis.png' %}" alt="" height="60px">
+      <p><strong>Tennis</strong></p>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <img src="{% static 'images/basket.png' %}" alt="" height="60px" >
+      <p><strong>Basketball</strong></p>
+    </div>
+    <div class="col-md-3 col-6 mb-4">
+      <img src="{% static 'images/padel.png' %}" alt="" height="60px" >
+      <p><strong>Padel</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="text-center bg-dark text-white py-5 rounded">
+  <h4>Prêt à jouer ?</h4>
+  <p>Réservez votre terrain dès maintenant !</p>
+
+  <a href="{% url 'terrain_list' %}" class="btn btn-success mb-3">
+    Commencer
+  </a>
+  <div class="d-flex justify-content-center gap-3 mt-2">
+    <a href="#">
+      <img src="{% static 'images/insta.png' %}" alt="" height="30px" class="icon-hover">
+    </a>
+    <a href="#">
+      <img src="{% static 'images/mail.png' %}" alt="" height="30px" class="icon-hover">
+    </a>
+  </div>
+</div>
+
+<style>
+  .icon-hover {
+  transition: 0.3s;
+}
+
+.icon-hover:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+</style>
+
+{% endblock %}

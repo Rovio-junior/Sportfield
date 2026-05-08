@@ -1,0 +1,33 @@
+{% extends 'reservations/base.html' %}
+{% block title %}Calendrier{% endblock %}
+{% block content %}
+<h2 class="mb-3"><i class="bi bi-calendar3 me-2 text-success"></i>Calendrier des réservations</h2>
+<div class="table-responsive">
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-success">
+      <tr>
+        <th><i class="bi bi-calendar-date me-1"></i>Date</th>
+        <th><i class="bi bi-clock me-1"></i>Heure</th>
+        <th>Durée</th>
+        <th>Terrain</th>
+        <th>Sport</th>
+        <th>Client</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for r in reservations %}
+      <tr>
+        <td>{{ r.date_reservation }}</td>
+        <td>{{ r.heure_debut|time:"H:i" }}</td>
+        <td>{{ r.duree }} min</td>
+        <td>{{ r.terrain.nom }}</td>
+        <td>{{ r.terrain.type_sport }}</td>
+        <td>{{ r.joueur.nom }}</td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="6" class="text-center text-muted">Aucune réservation à venir.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
