@@ -48,48 +48,53 @@
     <div class="col-md-3 col-6 mb-4">
       <img src="{% static 'images/foot.png' %}" alt="" height="60px" >
       <p><strong>Football</strong></p>
+      <p>Tarif pour 11v11 : 700 DH</p>
+      <p>Tarif pour 5v5 : 300 DH</p>
     </div>
     <div class="col-md-3 col-6 mb-4">
       <img src="{% static 'images/tennis.png' %}" alt="" height="60px">
       <p><strong>Tennis</strong></p>
+      <p>Tarif : 300 DH</p>
     </div>
     <div class="col-md-3 col-6 mb-4">
       <img src="{% static 'images/basket.png' %}" alt="" height="60px" >
       <p><strong>Basketball</strong></p>
+      <p>Tarif : 200 DH</p>
     </div>
     <div class="col-md-3 col-6 mb-4">
       <img src="{% static 'images/padel.png' %}" alt="" height="60px" >
       <p><strong>Padel</strong></p>
+      <p>Tarif : 140 DH par personne</p>
     </div>
   </div>
 </div>
 
-<div class="text-center bg-dark text-white py-5 rounded">
-  <h4>Prêt à jouer ?</h4>
-  <p>Réservez votre terrain dès maintenant !</p>
+  <div class="text-center bg-dark text-white py-5 rounded">
+    <h4>Prêt à jouer ?</h4>
+    <p>Réservez votre terrain dès maintenant !</p>
 
-  <a href="{% url 'terrain_list' %}" class="btn btn-success mb-3">
-    Commencer
-  </a>
-  <div class="d-flex justify-content-center gap-3 mt-2">
-    <a href="#">
-      <img src="{% static 'images/insta.png' %}" alt="" height="30px" class="icon-hover">
+    <a href="{% url 'terrain_list' %}" class="btn btn-success mb-3">
+      Commencer
     </a>
-    <a href="#">
-      <img src="{% static 'images/mail.png' %}" alt="" height="30px" class="icon-hover">
-    </a>
+    <div class="d-flex justify-content-center gap-3 mt-2">
+      <a href="#">
+        <img src="{% static 'images/insta.png' %}" alt="" height="50px" class="icon-hover">
+      </a>
+      <a href="#">
+        <img src="{% static 'images/mail.png' %}" alt="" height="50px" class="icon-hover">
+      </a>
+    </div>
   </div>
-</div>
 
-<style>
-  .icon-hover {
-  transition: 0.3s;
-}
+  <style>
+    .icon-hover {
+    transition: 0.3s;
+  }
 
-.icon-hover:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
-}
-</style>
+  .icon-hover:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  </style>
 
 {% endblock %}
